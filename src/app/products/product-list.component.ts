@@ -12,14 +12,14 @@ export class ProductListComponent implements OnInit{
     imageMargin: number = 2;
     showImage: boolean = false;
 
-    x: string;
+    _listFilter: string;
     get listFilter(): string {
         console.log('get Method called');
-        return this.x;
+        return this._listFilter;
     }
     set listFilter(value:string) {
         console.log('Set called with: ' + value);
-        this.x = value;
+        this._listFilter = value;
         this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
     }
 
@@ -79,13 +79,12 @@ export class ProductListComponent implements OnInit{
     
     constructor(){
         this.filteredProducts = this.products;
-        this.listFilter = 'cart';
     }
 
-    performFilter(sanjana: string): IProduct[]{
-        sanjana = sanjana.toLocaleLowerCase();
+    performFilter(filterBy: string): IProduct[]{
+        filterBy = filterBy.toLocaleLowerCase();
         return this.products.filter(
-            (subu: IProduct) => subu.productName.toLocaleLowerCase().indexOf(sanjana) !== -1);
+            (product: IProduct) => product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
     }
 
     toggleImage(): void{
