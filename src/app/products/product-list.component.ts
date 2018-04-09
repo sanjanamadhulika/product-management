@@ -7,7 +7,7 @@ import { ProductServices } from "./product.service";
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit{
+export class ProductListComponent implements OnInit {
     pageTitle: string = 'Product List';
     imageWidth: number = 50;
     imageMargin: number = 2;
@@ -29,7 +29,6 @@ export class ProductListComponent implements OnInit{
     products: IProduct[] = [];
     
     constructor(private _productService: ProductServices) {
-        
     }
 
     onRatingClicked(message:string):void{
